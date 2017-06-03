@@ -1,0 +1,33 @@
+<html layout:decorator="default-layout" th:with="search = true">
+
+
+
+<th:block layout:fragment="title">Purchasing Orders</th:block>
+<th:block layout:fragment="content">
+	<table id="searchable_table" class="table table-hover">
+		<thead>
+			<tr>
+				<th class="col">#</th>
+				<th class="col">Order Id</th>
+				<th class="col">From</th>
+				<th class="col">To</th>
+				<th class="col">Ticket Price</th>
+				<th class="col"># Of Tickets</th>
+				<th class="col">Total Amount</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="order,iter : ${orders}">
+				<td th:text="@{${iter.index}+1}"></td>
+				<td th:text="${order.orderId}"></td>
+				<td th:text="${order.from}"></td>
+				<td th:text="${order.to}"></td>
+				<td th:text="@{${order.ticketPrice}+' '+${order.priceCurrency}}"></td>
+				<td th:text="${order.numberOfTickets}"></td>
+				<td th:text="@{${order.totalAmount}+' '+${order.priceCurrency}}"></td>
+			</tr>
+		</tbody>
+	</table>
+</th:block>
+
+</html>

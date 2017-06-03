@@ -1,0 +1,8 @@
+<!-- ADMIN Menu -->
+<li sec:authorize="hasAuthority('ROLE_ADMIN')" ><a href="/admin/home">Home</a></li>
+<li sec:authorize="hasAuthority('ROLE_ADMIN')"><a href="/admin/customers">Customers</a></li>
+<li sec:authorize="hasAuthority('ROLE_ADMIN')"><a href="/admin/orders">Purchasing Orders</a></li>
+
+<!-- CUSTOMER Menu -->
+<li sec:authorize="hasAuthority('ROLE_CUSTOMER')"><a href="/customer/home">Home</a></li>
+<li sec:authorize="hasAuthority('ROLE_CUSTOMER')"><a href="/customer/mytickets">My Tickets</a></li>

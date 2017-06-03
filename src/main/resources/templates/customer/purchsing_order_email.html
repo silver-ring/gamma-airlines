@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<style>
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th {
+	background-color: #337ab7;
+	color: white;
+}
+
+th, td {
+	text-align: left;
+	padding: 8px;
+	border: #000000 thin solid;
+}
+
+div.container {
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+div.header {
+	background-color: #337ab7;
+	color: white;
+	font-family: arial, sans-serif;
+	padding: 10px 10px 10px 10px;
+	border-collapse: collapse;
+}
+
+div.body {
+	padding: 10px 10px 10px 10px;
+}
+</style>
+<title>Gamma Airlines</title>
+</head>
+<body>
+
+	<div class="container">
+		<div class="header">
+			<h1>Gamma Airlines</h1>
+		</div>
+
+		<div class="body">
+			<h3 th:text="'Dear ' + ${order.fullName}" />
+
+			<p>please check your purchasing order summary as mentioned below
+			</p>
+
+			<table>
+				<thead>
+					<tr>
+						<th>Order Id</th>
+						<th>From</th>
+						<th>To</th>
+						<th>Ticket Price</th>
+						<th># Of Tickets</th>
+						<th>Total Amount</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td th:text="${order.orderId}"></td>
+						<td th:text="${order.from}"></td>
+						<td th:text="${order.to}"></td>
+						<td th:text="${order.ticketPrice} +' '+${order.currency}"></td>
+						<td th:text="${order.numberOfTickets}"></td>
+						<td th:text="${order.totalAmount}+' '+${order.currency}"></td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+</body>
+</html>

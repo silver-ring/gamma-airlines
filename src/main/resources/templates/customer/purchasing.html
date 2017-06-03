@@ -1,0 +1,66 @@
+<html layout:decorator="default-layout" th:with="width=6, offset=3">
+
+
+<th:block layout:fragment="title">Purchasing Order</th:block>
+<th:block layout:fragment="content">
+	<form id="register-form"
+		th:action="@{'/customer/purchase/'+${purchasingDetails.from}+'/'+${purchasingDetails.to}}"
+		method="post" role="form">
+		<table class="table">
+			<thead>
+				<tr>
+					<td class="col-md-2"><strong>Name</strong></td>
+					<td class="col-md-2" th:text="${purchasingDetails.fullName}"></td>
+				</tr>
+			</thead>
+			<tr>
+				<td><strong>From</strong></td>
+				<td th:text="${purchasingDetails.from}"></td>
+			</tr>
+			<tr>
+				<td><strong>To</strong></td>
+				<td th:text="${purchasingDetails.to}"></td>
+			</tr>
+			<tr>
+				<td><strong>Ticket Price</strong></td>
+				<td
+					th:text="${purchasingDetails.ticketPrice}+' '+${purchasingDetails.currency}"></td>
+			</tr>
+			<tr>
+				<td><strong>Number of tickets</strong></td>
+				<td>
+					<div class="input-group col-xs-6">
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-default btn-number"
+								disabled="disabled" data-type="minus"
+								data-field="numberOfTickets">
+								<span class="glyphicon glyphicon-minus"></span>
+							</button>
+						</span> <input type="text" name="numberOfTickets"
+							class="form-control input-number" value="1" min="1" max="100"
+							readonly="true" /> <span class="input-group-btn">
+							<button type="button" class="btn btn-default btn-number"
+								data-type="plus" data-field="numberOfTickets">
+								<span class="glyphicon glyphicon-plus"></span>
+							</button>
+						</span>
+					</div>
+				</td>
+			</tr>
+			<tfoot>
+				<tr>
+					<td colspan="2"><br />
+						<button type="submit" class="btn btn-primary btn-lg btn-block">Checkout</button>
+						<br /> <a href="/customer/home"
+						class="btn btn-primary btn-lg btn-block">Cancel</a></td>
+				</tr>
+			</tfoot>
+		</table>
+	</form>
+</th:block>
+
+<th:block layout:fragment="js">
+	<script src="/js/purchasing_order.js" />
+</th:block>
+
+</html>

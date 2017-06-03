@@ -1,0 +1,46 @@
+<html layout:decorator="default-layout" th:with="search = true">
+
+
+
+<th:block layout:fragment="title">My Tickets</th:block>
+<th:block layout:fragment="content">
+	<table id="searchable_table" class="table table-hover">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Order Id</th>
+				<th>From</th>
+				<th>To</th>
+				<th>Ticket Price</th>
+				<th># Of Tickets</th>
+				<th>Total Amount</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="ticket,iter : ${tickets}">
+				<td th:text="${iter.index}+1"></td>
+				<td th:text="${ticket.orderId}"></td>
+				<td th:text="${ticket.from}"></td>
+				<td th:text="${ticket.to}"></td>
+				<td th:text="@{${ticket.ticketPrice}+' '+${ticket.priceCurrency}}"></td>
+				<td th:text="${ticket.numberOfTickets}"></td>
+				<td th:text="@{${ticket.totalAmount}+' '+${ticket.priceCurrency}}"></td>
+				<td><a
+					th:href="@{'/customer/purchase/export/pdf/'+${ticket.orderId}}"
+					target="_blank">pdf</a></td>
+				<td><a href="#"
+					th:onclick="'sendEmail(' + '\'/customer/purchase/email/' + ${ticket.orderId} + '\');'">send
+						via email</a></td>
+			</tr>
+		</tbody>
+	</table>
+</th:block>
+
+<th:block layout:fragment="models">
+	<div th:replace="/fragments/send_email_modal" />
+</th:block>
+
+
+</html>

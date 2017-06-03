@@ -1,0 +1,61 @@
+<html layout:decorator="default-layout" th:with="width=6, offset=3">
+
+
+<th:block layout:fragment="title">Purchasing Order Summary</th:block>
+<th:block layout:fragment="content">
+
+	<table class="table">
+		<thead>
+			<tr>
+				<td class="col-md-2"><strong>Name</strong></td>
+				<td class="col-md-2" th:text="${purchasingOrderSummary.fullName}"></td>
+			</tr>
+			<tr>
+				<td class="col-md-2"><strong>Purchase Order Number</strong></td>
+				<td class="col-md-2" th:text="${purchasingOrderSummary.orderId}"></td>
+			</tr>
+		</thead>
+		<tr>
+			<td><strong>From</strong></td>
+			<td class="col-md-2" th:text="${purchasingOrderSummary.from}"></td>
+		</tr>
+		<tr>
+			<td><strong>To</strong></td>
+			<td class="col-md-2" th:text="${purchasingOrderSummary.to}"></td>
+		</tr>
+		<tr>
+			<td><strong>Ticket Price</strong></td>
+			<td
+				th:text="${purchasingOrderSummary.ticketPrice}+' '+${purchasingOrderSummary.currency}"></td>
+		</tr>
+		<tr>
+			<td><strong>Number of ticket(s)</strong></td>
+			<td th:text="${purchasingOrderSummary.numberOfTickets}+' ticket(s)'"></td>
+		</tr>
+		<tr>
+			<td><strong>Total Amount</strong></td>
+			<td
+				th:text="${purchasingOrderSummary.totalAmount}+' '+${purchasingOrderSummary.currency}"></td>
+		</tr>
+		<tfoot>
+			<tr>
+				<td colspan="2"><br /> <a 
+				th:onclick="'sendEmail(' + '\'/customer/purchase/email/' + ${purchasingOrderSummary.orderId} + '\');'"
+					class="btn btn-primary btn-lg btn-block">Send
+						summary to my email</a> <br /> <a target="_blank"
+					th:href="@{'/customer/purchase/export/pdf/'+${purchasingOrderSummary.orderId}}"
+					class="btn btn-primary btn-lg btn-block">Download summary as
+						pdf</a> <br /> <a href="/customer/home"
+					class="btn btn-primary btn-lg btn-block">Finish</a></td>
+			</tr>
+		</tfoot>
+	</table>	
+</th:block>
+
+<th:block layout:fragment="models">
+	<div th:replace="/fragments/send_email_modal" />
+</th:block>
+
+
+
+</html>

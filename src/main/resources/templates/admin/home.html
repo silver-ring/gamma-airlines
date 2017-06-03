@@ -1,0 +1,25 @@
+<html layout:decorator="default-layout" th:with="width = 8, offset=2">
+
+
+<th:block layout:fragment="title">Administrative Panel</th:block>
+<th:block layout:fragment="content">
+	<div class="row">
+		<div class="col-md-1 col-md-offset-1">
+			<div>
+				<i class="fa fa-users fa-3x" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<a href="/admin/customers"><h4>Customers</h4></a>
+		</div>
+		<div class="col-md-1">
+			<div>
+				<i class="fa fa-ticket fa-3x" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div class="col-md-5">
+			<a href="/admin/orders"><h4>Purchasing Orders</h4></a>
+		</div>
+	</div>
+</th:block>
+</html>

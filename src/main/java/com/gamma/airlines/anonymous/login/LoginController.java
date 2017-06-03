@@ -22,7 +22,7 @@ import com.gamma.airlines.properties.URLS;
 class LoginController implements IController {
 
   /** Constant LOGIN_VIEW. */
-  private static final String LOGIN_VIEW = "/anonymous/login";
+  private static final String LOGIN_VIEW = "anonymous/login";
 
   /** login service. */
   @Autowired
